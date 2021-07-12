@@ -8,6 +8,7 @@ namespace FancyCalculator
         {
             Console.WriteLine("A Console Calculator");
             bool running = true;
+            decimal previousTotal;
             while (running)
             {
                 Console.WriteLine("Enter in the operation that you would like to perform.");
