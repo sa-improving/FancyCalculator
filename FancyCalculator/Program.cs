@@ -8,7 +8,7 @@ namespace FancyCalculator
         {
             Console.WriteLine("A Console Calculator");
 
-            Console.WriteLine("Enter what you would like to see added.");
+            Console.WriteLine("Enter in the operation that you would like to perform.");
             var expressionInput = Console.ReadLine().Trim();
             var expressionNumbers = expressionInput.Split(" ");
 
@@ -46,6 +46,9 @@ namespace FancyCalculator
                     break;
                 case "/":
                     Console.WriteLine("Result: {0}", Calculations.Division(firstNumber, secondNumber));
+                    break;
+                default:
+                    Console.WriteLine("The operation {0} is invalid. You must use one of the following: + - * /", expressionNumbers[1]);
                     break;
             }
 
