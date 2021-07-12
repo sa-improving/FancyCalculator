@@ -8,11 +8,18 @@ namespace TestableCalculatorRunner
         {
             var calculator = new Calculator();
 
-            Console.WriteLine("Enter in an expression to add 2 numbers.");
+            Console.WriteLine("Enter in an expression for 2 numbers.");
             string input = Console.ReadLine().Trim();
 
             EvaluationResult output = calculator.Evaluate(input);
-            Console.WriteLine("Result: " + output.Result);
+            if(String.IsNullOrEmpty(output.ErrorMessage))
+            {
+                Console.WriteLine("Result: {0}", output.Result);
+            }
+            else
+            {
+                Console.WriteLine("\u001b[91m" + output.ErrorMessage + "\u001b[0m");
+            }
         }
     }
 }
