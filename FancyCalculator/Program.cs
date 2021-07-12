@@ -7,50 +7,52 @@ namespace FancyCalculator
         static void Main(string[] args)
         {
             Console.WriteLine("A Console Calculator");
-
-            Console.WriteLine("Enter in the operation that you would like to perform.");
-            var expressionInput = Console.ReadLine().Trim();
-            var expressionNumbers = expressionInput.Split(" ");
-
-
-            //Console.WriteLine("Enter a Number");
-
-            //var firstInput = Console.ReadLine().Trim();
-            decimal firstNumber;
-            if (!Decimal.TryParse(expressionNumbers[0], out firstNumber))
+            bool running = true;
+            while (running)
             {
-                Console.WriteLine("The first value, {0}, was not a vaild number", expressionNumbers[0]);
-                return;
-            }
+                Console.WriteLine("Enter in the operation that you would like to perform.");
+                var expressionInput = Console.ReadLine().Trim();
+                if(expressionInput.ToLower().Equals("exit"))
+                {
+                    running = false;
+                    return;
+                }
+                var expressionNumbers = expressionInput.Split(" ");
 
-            //Console.WriteLine("Enter a second number, and I will add it to the first.");
+                decimal firstNumber;
+                if (!Decimal.TryParse(expressionNumbers[0], out firstNumber))
+                {
+                    Console.WriteLine("The first value, {0}, was not a vaild number", expressionNumbers[0]);
+                    return;
+                }
 
-            //var secondInput = Console.ReadLine().Trim();
-            decimal secondNumber;
-            if (!Decimal.TryParse(expressionNumbers[2], out secondNumber))
-            {
-                Console.WriteLine("The second value, {0}, was not a vaild number", expressionNumbers[2]);
-                return;
-            }
+                decimal secondNumber;
+                if (!Decimal.TryParse(expressionNumbers[2], out secondNumber))
+                {
+                    Console.WriteLine("The second value, {0}, was not a vaild number", expressionNumbers[2]);
+                    return;
+                }
 
-            switch(expressionNumbers[1])
-            {
-                case "+":
-                    Console.WriteLine("Result: {0}", Calculations.Addition(firstNumber, secondNumber));
-                    break;
-                case "-":
-                    Console.WriteLine("Result: {0}", Calculations.Subtracation(firstNumber, secondNumber));
-                    break;
-                case "*":
-                    Console.WriteLine("Result: {0}", Calculations.Multiplicaiton(firstNumber, secondNumber));
-                    break;
-                case "/":
-                    Console.WriteLine("Result: {0}", Calculations.Division(firstNumber, secondNumber));
-                    break;
-                default:
-                    Console.WriteLine("The operation {0} is invalid. You must use one of the following: + - * /", expressionNumbers[1]);
-                    break;
+                switch (expressionNumbers[1])
+                {
+                    case "+":
+                        Console.WriteLine("Result: {0}", Calculations.Addition(firstNumber, secondNumber));
+                        break;
+                    case "-":
+                        Console.WriteLine("Result: {0}", Calculations.Subtracation(firstNumber, secondNumber));
+                        break;
+                    case "*":
+                        Console.WriteLine("Result: {0}", Calculations.Multiplicaiton(firstNumber, secondNumber));
+                        break;
+                    case "/":
+                        Console.WriteLine("Result: {0}", Calculations.Division(firstNumber, secondNumber));
+                        break;
+                    default:
+                        Console.WriteLine("The operation {0} is invalid. You must use one of the following: + - * /", expressionNumbers[1]);
+                        break;
+                }
             }
+            
 
             
         }
