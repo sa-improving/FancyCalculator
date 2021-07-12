@@ -41,6 +41,12 @@ namespace FancyCalculator
                 case "-":
                     Console.WriteLine("Result: {0}", Calculations.Subtracation(firstNumber, secondNumber));
                     break;
+                case "*":
+                    Console.WriteLine("Result: {0}", Calculations.Multiplicaiton(firstNumber, secondNumber));
+                    break;
+                case "/":
+                    Console.WriteLine("Result: {0}", Calculations.Division(firstNumber, secondNumber));
+                    break;
             }
 
             

@@ -18,5 +18,15 @@ namespace FancyCalculator
         {
             return input1 - input2;
         }
+
+        public static decimal Multiplicaiton(decimal input1, decimal input2)
+        {
+            return input1 * input2;
+        }
+
+        public static decimal Division(decimal input1, decimal input2)
+        {
+            return input1 / input2;
+        }
     }
 }
