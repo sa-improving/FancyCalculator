@@ -13,3 +13,4 @@ C:\Users\SkylerAschenbeck\source\repos\FancyCalculator\FancyCalculator\obj\Debug
 C:\Users\SkylerAschenbeck\source\repos\FancyCalculator\FancyCalculator\obj\Debug\net5.0\ref\FancyCalculator.dll
 C:\Users\SkylerAschenbeck\source\repos\FancyCalculator\FancyCalculator\obj\Debug\net5.0\FancyCalculator.pdb
 C:\Users\SkylerAschenbeck\source\repos\FancyCalculator\FancyCalculator\obj\Debug\net5.0\FancyCalculator.genruntimeconfig.cache
+C:\Users\SkylerAschenbeck\source\repos\FancyCalculator\FancyCalculator\obj\Debug\net5.0\FancyCalculator.csproj.AssemblyReference.cache
