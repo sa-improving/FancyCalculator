@@ -19,18 +19,24 @@ namespace FancyCalculator
                 }
                 var expressionNumbers = expressionInput.Split(" ");
 
+                if (expressionNumbers.Length < 3)
+                {
+                    Console.WriteLine("An operation must be in the form '5 + 8'. Please try again.");
+                    continue;
+                }
+
                 decimal firstNumber;
                 if (!Decimal.TryParse(expressionNumbers[0], out firstNumber))
                 {
                     Console.WriteLine("The first value, {0}, was not a vaild number", expressionNumbers[0]);
-                    return;
+                    continue;
                 }
 
                 decimal secondNumber;
                 if (!Decimal.TryParse(expressionNumbers[2], out secondNumber))
                 {
                     Console.WriteLine("The second value, {0}, was not a vaild number", expressionNumbers[2]);
-                    return;
+                    continue;
                 }
 
                 switch (expressionNumbers[1])
