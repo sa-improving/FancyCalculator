@@ -31,11 +31,27 @@ namespace CalculatorCore
                 };
             }
 
-            return new EvaluationResult
+            var result = new EvaluationResult();
+
+            switch(inputArray[1])
             {
-                Result = firstNumber + secondNumber
-            };
+                case "+":
+                    result.Result = firstNumber + secondNumber;
+                    break;
+                case "-":
+                    result.Result = firstNumber - secondNumber;
+                    break;
+                case "*":
+                    result.Result = firstNumber * secondNumber;
+                    break;
+                case "/":
+                    result.Result = firstNumber / secondNumber;
+                    break;
+                default:
+                    throw new NotImplementedException($"I don't recognize the operator: {inputArray[1]}");
+            }
+
+            return result;
         }
     }
 }
-

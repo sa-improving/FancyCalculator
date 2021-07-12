@@ -26,5 +26,26 @@ namespace CalculatorCore.Tests
             var result = calc.Evaluate("2 + B").ErrorMessage;
             Assert.AreEqual("The second value, 'B', is not a valid number", result);
         }
+
+        [TestMethod]
+        public void SubtractNumberFromAnother()
+        {
+            var result = calc.Evaluate("8 - 6").Result;
+            Assert.AreEqual(2, result);
+        }
+
+        [TestMethod]
+        public void MultiplyTwoNumbers()
+        {
+            var result = calc.Evaluate("16 * 2").Result;
+            Assert.AreEqual(32, result);
+        }
+
+        [TestMethod]
+        public void DivideANumber()
+        {
+            var result = calc.Evaluate("16 / 2").Result;
+            Assert.AreEqual(8, result);
+        }
     }
 }
