@@ -1,3 +1,7 @@
+C:\Users\SkylerAschenbeck\source\repos\FancyCalculator\FancyCalculator\obj\Debug\net5.0\FancyCalculator.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\SkylerAschenbeck\source\repos\FancyCalculator\FancyCalculator\obj\Debug\net5.0\FancyCalculator.AssemblyInfoInputs.cache
+C:\Users\SkylerAschenbeck\source\repos\FancyCalculator\FancyCalculator\obj\Debug\net5.0\FancyCalculator.AssemblyInfo.cs
+C:\Users\SkylerAschenbeck\source\repos\FancyCalculator\FancyCalculator\obj\Debug\net5.0\FancyCalculator.csproj.CoreCompileInputs.cache
 C:\Users\SkylerAschenbeck\source\repos\FancyCalculator\FancyCalculator\bin\Debug\net5.0\FancyCalculator.exe
 C:\Users\SkylerAschenbeck\source\repos\FancyCalculator\FancyCalculator\bin\Debug\net5.0\FancyCalculator.deps.json
 C:\Users\SkylerAschenbeck\source\repos\FancyCalculator\FancyCalculator\bin\Debug\net5.0\FancyCalculator.runtimeconfig.json
@@ -5,11 +9,6 @@ C:\Users\SkylerAschenbeck\source\repos\FancyCalculator\FancyCalculator\bin\Debug
 C:\Users\SkylerAschenbeck\source\repos\FancyCalculator\FancyCalculator\bin\Debug\net5.0\FancyCalculator.dll
 C:\Users\SkylerAschenbeck\source\repos\FancyCalculator\FancyCalculator\bin\Debug\net5.0\ref\FancyCalculator.dll
 C:\Users\SkylerAschenbeck\source\repos\FancyCalculator\FancyCalculator\bin\Debug\net5.0\FancyCalculator.pdb
-C:\Users\SkylerAschenbeck\source\repos\FancyCalculator\FancyCalculator\obj\Debug\net5.0\FancyCalculator.csproj.AssemblyReference.cache
-C:\Users\SkylerAschenbeck\source\repos\FancyCalculator\FancyCalculator\obj\Debug\net5.0\FancyCalculator.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\SkylerAschenbeck\source\repos\FancyCalculator\FancyCalculator\obj\Debug\net5.0\FancyCalculator.AssemblyInfoInputs.cache
-C:\Users\SkylerAschenbeck\source\repos\FancyCalculator\FancyCalculator\obj\Debug\net5.0\FancyCalculator.AssemblyInfo.cs
-C:\Users\SkylerAschenbeck\source\repos\FancyCalculator\FancyCalculator\obj\Debug\net5.0\FancyCalculator.csproj.CoreCompileInputs.cache
 C:\Users\SkylerAschenbeck\source\repos\FancyCalculator\FancyCalculator\obj\Debug\net5.0\FancyCalculator.dll
 C:\Users\SkylerAschenbeck\source\repos\FancyCalculator\FancyCalculator\obj\Debug\net5.0\ref\FancyCalculator.dll
 C:\Users\SkylerAschenbeck\source\repos\FancyCalculator\FancyCalculator\obj\Debug\net5.0\FancyCalculator.pdb
