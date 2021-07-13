@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace FancyCalculator
 {
@@ -9,6 +10,7 @@ namespace FancyCalculator
             Console.WriteLine("A Console Calculator");
             bool running = true;
             decimal previousTotal = 0;
+            List<string> history = new List<string>();
             while (running)
             {
                 Console.WriteLine("Enter in the operation that you would like to perform.");
@@ -17,6 +19,18 @@ namespace FancyCalculator
                 {
                     running = false;
                     return;
+                }
+                if(expressionInput.ToLower().Equals("history"))
+                {
+                    if(history.Count == 0)
+                    {
+                        Console.WriteLine("No operations have been performed");
+                    }
+                    else
+                    {
+                        history.ForEach(x => Console.Write(x + "\n"));
+                    }
+                    continue;
                 }
                 var expressionNumbers = expressionInput.Split(" ");
 
@@ -33,7 +47,9 @@ namespace FancyCalculator
                             Console.WriteLine("The second value, {0}, was not a vaild number", expressionNumbers[1]);
                             break;
                         }
-                        previousTotal = StandAloneExpression(expressionNumbers[0], previousTotal, continuingValue);
+                        previousTotal =
+                            StandAloneExpression(expressionNumbers[0], previousTotal, continuingValue);
+                        history.Add(expressionInput);
                         continue;
                 }
 
@@ -61,6 +77,7 @@ namespace FancyCalculator
                 if(result != 0)
                 {
                     previousTotal = result;
+                    history.Add(expressionInput);
                 }
             }           
         }

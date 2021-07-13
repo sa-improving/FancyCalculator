@@ -31,6 +31,7 @@ namespace CalculatorCore
                 };
             }
 
+
             var result = new EvaluationResult();
 
             switch(inputArray[1])
@@ -48,7 +49,8 @@ namespace CalculatorCore
                     result.Result = firstNumber / secondNumber;
                     break;
                 default:
-                    throw new NotImplementedException($"I don't recognize the operator: {inputArray[1]}");
+                    result.ErrorMessage = $"The operation, '{inputArray[1]}',  is invalid. You must use one of the following : + - * /";
+                    break;
             }
 
             return result;

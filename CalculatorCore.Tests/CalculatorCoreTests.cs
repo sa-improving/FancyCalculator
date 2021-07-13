@@ -54,5 +54,12 @@ namespace CalculatorCore.Tests
             var result = _calc.Evaluate("16 / 2").Result;
             Assert.AreEqual(8, result);
         }
+
+        [TestMethod]
+        public void ValidateOperator()
+        {
+            var result = _calc.Evaluate("2 minus 1").ErrorMessage;
+            Assert.AreEqual("The operation, 'minus',  is invalid. You must use one of the following : + - * /", result);
+        }
     }
 }
