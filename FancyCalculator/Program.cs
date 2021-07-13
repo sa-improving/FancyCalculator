@@ -8,7 +8,7 @@ namespace FancyCalculator
         {
             Console.WriteLine("A Console Calculator");
             bool running = true;
-            decimal previousTotal;
+            decimal previousTotal = 0;
             while (running)
             {
                 Console.WriteLine("Enter in the operation that you would like to perform.");
@@ -19,6 +19,23 @@ namespace FancyCalculator
                     return;
                 }
                 var expressionNumbers = expressionInput.Split(" ");
+
+                decimal continuingValue;
+
+                switch (expressionNumbers[0])
+                {
+                    case "+":
+                    case "-":
+                    case "*":
+                    case "/":
+                        if (!Decimal.TryParse(expressionNumbers[1], out continuingValue))
+                        {
+                            Console.WriteLine("The second value, {0}, was not a vaild number", expressionNumbers[1]);
+                            break;
+                        }
+                        previousTotal = StandAloneExpression(expressionNumbers[0], previousTotal, continuingValue);
+                        continue;
+                }
 
                 if (expressionNumbers.Length < 3)
                 {
@@ -40,28 +57,34 @@ namespace FancyCalculator
                     continue;
                 }
 
-                switch (expressionNumbers[1])
+                var result = StandAloneExpression(expressionNumbers[1], firstNumber, secondNumber);
+                if(result != 0)
                 {
-                    case "+":
-                        Console.WriteLine("Result: {0}", Calculations.Addition(firstNumber, secondNumber));
-                        break;
-                    case "-":
-                        Console.WriteLine("Result: {0}", Calculations.Subtracation(firstNumber, secondNumber));
-                        break;
-                    case "*":
-                        Console.WriteLine("Result: {0}", Calculations.Multiplicaiton(firstNumber, secondNumber));
-                        break;
-                    case "/":
-                        Console.WriteLine("Result: {0}", Calculations.Division(firstNumber, secondNumber));
-                        break;
-                    default:
-                        Console.WriteLine("The operation {0} is invalid. You must use one of the following: + - * /", expressionNumbers[1]);
-                        break;
+                    previousTotal = result;
                 }
-            }
-            
+            }           
+        }
 
-            
+        static decimal StandAloneExpression(string op, decimal first, decimal second)
+        {
+            switch (op)
+            {
+                case "+":
+                    Console.WriteLine("Result: {0}", Calculations.Addition(first, second));
+                    return Calculations.Addition(first, second);
+                case "-":
+                    Console.WriteLine("Result: {0}", Calculations.Subtracation(first, second));
+                    return Calculations.Subtracation(first, second);
+                case "*":
+                    Console.WriteLine("Result: {0}", Calculations.Multiplicaiton(first, second));
+                    return Calculations.Multiplicaiton(first, second);
+                case "/":
+                    Console.WriteLine("Result: {0}", Calculations.Division(first, second));
+                    return Calculations.Division(first, second);
+                default:
+                    Console.WriteLine("The operation {0} is invalid. You must use one of the following: + - * /", op);
+                    return 0;
+            }
         }
     }
 }
