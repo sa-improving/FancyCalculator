@@ -23,15 +23,15 @@ namespace CalculatorCore.Tests
         [TestMethod]
         public void IncorrectFirstValue()
         {
-            var result = _calc.Evaluate("A + 2").ErrorMessage;
-            Assert.AreEqual("The first value, 'A', is not a valid number", result);
+            var result = _calc.Evaluate("A + 2");
+            Assert.AreEqual("The first value, 'A', is not a valid number", result.ErrorMessage);
         }
 
         [TestMethod]
         public void IncorrectSecondValue()
         {
-            var result = _calc.Evaluate("2 + B").ErrorMessage;
-            Assert.AreEqual("The second value, 'B', is not a valid number", result);
+            var result = _calc.Evaluate("2 + B");
+            Assert.AreEqual("The second value, 'B', is not a valid number", result.ErrorMessage);
         }
 
         [TestMethod]
@@ -58,8 +58,15 @@ namespace CalculatorCore.Tests
         [TestMethod]
         public void ValidateOperator()
         {
-            var result = _calc.Evaluate("2 minus 1").ErrorMessage;
-            Assert.AreEqual("The operation, 'minus',  is invalid. You must use one of the following : + - * /", result);
+            var result = _calc.Evaluate("2 minus 1");
+            Assert.AreEqual("The operation, 'minus',  is invalid. You must use one of the following : + - * /", result.ErrorMessage);
+        }
+
+        [TestMethod]
+        public void CountOperationPieces()
+        {
+            var result = _calc.Evaluate("2 + ");
+            Assert.AreEqual("An operation must be in the form '5 + 8'. Please try again.", result.ErrorMessage);
         }
     }
 }

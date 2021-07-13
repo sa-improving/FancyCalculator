@@ -10,10 +10,18 @@ namespace CalculatorCore
     {
         public EvaluationResult Evaluate(string input)
         {
-            var inputArray = input.Split(" ");
+            var inputArray = input.Trim().Split(" ");
 
             decimal firstNumber;
             decimal secondNumber;
+
+            if(inputArray.Length < 3)
+            {
+                return new EvaluationResult
+                {
+                    ErrorMessage = "An operation must be in the form '5 + 8'. Please try again."
+                };
+            }
 
             if (!decimal.TryParse(inputArray[0], out firstNumber))
             {
