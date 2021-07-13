@@ -8,53 +8,80 @@ namespace CalculatorCore
 {
     public class Calculator
     {
+        private decimal recentValue = 0;
+
         public EvaluationResult Evaluate(string input)
         {
             var inputArray = input.Trim().Split(" ");
 
-            decimal firstNumber;
-            decimal secondNumber;
+            decimal firstNumber = 0;
+            decimal secondNumber = 0;
+            string op = "";
 
-            if(inputArray.Length < 3)
+            if(inputArray.Length != 3 && inputArray.Length != 2)
             {
                 return new EvaluationResult
                 {
-                    ErrorMessage = "An operation must be in the form '5 + 8'. Please try again."
+                    ErrorMessage = "An operation must be in the form '5 + 8' or '+ 2'. Please try again."
                 };
             }
 
-            if (!decimal.TryParse(inputArray[0], out firstNumber))
+            if (inputArray.Length == 2)
             {
-                return new EvaluationResult
+                op = inputArray[0];
+                firstNumber = recentValue;
+                if (!decimal.TryParse(inputArray[1], out secondNumber))
                 {
-                    ErrorMessage = $"The first value, '{inputArray[0]}', is not a valid number"
-                };
+                    return new EvaluationResult
+                    {
+                        ErrorMessage = $"An operation must be in the form '5 + 8' or '+ 2'. Please try again."
+                    };
+
+                }
             }
-        
-            if(!decimal.TryParse(inputArray[2], out secondNumber))
+
+            if(inputArray.Length == 3)
             {
-                return new EvaluationResult
+                op = inputArray[1];
+
+                if (!decimal.TryParse(inputArray[0], out firstNumber))
                 {
-                    ErrorMessage = $"The second value, '{inputArray[2]}', is not a valid number"
-                };
+                    return new EvaluationResult
+                    {
+                        ErrorMessage = $"The first value, '{inputArray[0]}', is not a valid number"
+                    };
+                }
+
+                if (!decimal.TryParse(inputArray[2], out secondNumber))
+                {
+                    return new EvaluationResult
+                    {
+                        ErrorMessage = $"The second value, '{inputArray[2]}', is not a valid number"
+                    };
+                }
             }
+            
 
 
             var result = new EvaluationResult();
 
-            switch(inputArray[1])
+            switch(op)
             {
                 case "+":
                     result.Result = firstNumber + secondNumber;
+                    recentValue = result.Result;
                     break;
                 case "-":
                     result.Result = firstNumber - secondNumber;
+                    recentValue = result.Result;
                     break;
                 case "*":
                     result.Result = firstNumber * secondNumber;
+                    recentValue = result.Result;
                     break;
                 case "/":
                     result.Result = firstNumber / secondNumber;
+                    recentValue = result.Result;
                     break;
                 default:
                     result.ErrorMessage = $"The operation, '{inputArray[1]}',  is invalid. You must use one of the following : + - * /";

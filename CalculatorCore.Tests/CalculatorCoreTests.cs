@@ -66,7 +66,15 @@ namespace CalculatorCore.Tests
         public void CountOperationPieces()
         {
             var result = _calc.Evaluate("2 + ");
-            Assert.AreEqual("An operation must be in the form '5 + 8'. Please try again.", result.ErrorMessage);
+            Assert.AreEqual("An operation must be in the form '5 + 8' or '+ 2'. Please try again.", result.ErrorMessage);
+        }
+
+        [TestMethod]
+        public void ContinuingOpertaions()
+        {
+            _calc.Evaluate("5 * 5");
+            var result = _calc.Evaluate("- 7");
+            Assert.AreEqual(18, result.Result);
         }
     }
 }
