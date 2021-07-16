@@ -38,7 +38,7 @@ namespace FancyCalculator
                             {
                                 case "+":
                                     operatorHistory = history.Where(x => x.Contains("+")).ToList();
-                                    operatorHistory.ForEach(x => Console.Write("{0}\n", x));
+                                    operatorHistory.ForEach(x => Console.Write("{0}\t {1} {2}\t\n", x.Split("=")[0], "=",  x.Split("=")[1]));
                                     break;
                                 case "-":
                                     operatorHistory = history.Where(x => x.Contains("-")).ToList();
