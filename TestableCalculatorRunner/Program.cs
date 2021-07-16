@@ -6,7 +6,7 @@ namespace TestableCalculatorRunner
     {
         static void Main(string[] args)
         {
-            var calculator = new Calculator();
+            var calculator = new Calculator(0);
             bool running = true;
             while(running)
             {
@@ -17,6 +17,19 @@ namespace TestableCalculatorRunner
                 {
                     running = false;
                     return;
+                }
+
+                if(input.ToLower().Equals("history"))
+                {
+                    if(calculator.history.Count == 0)
+                    {
+                        Console.WriteLine("No history available.");
+                    }
+                    else
+                    {
+                        calculator.history.ForEach(x => Console.WriteLine(x));
+                    }
+                    continue;
                 }
 
                 EvaluationResult output = calculator.Evaluate(input);

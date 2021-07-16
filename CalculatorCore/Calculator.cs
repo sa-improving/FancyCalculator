@@ -9,7 +9,21 @@ namespace CalculatorCore
     public class Calculator
     {
         private decimal recentValue = 0;
+        public List<String> history { get; set; }
 
+        public Calculator(decimal value)
+        {
+            recentValue = value;
+            history = new List<string>();
+        }
+
+        public Calculator(string latestValue)
+        {
+            decimal value;
+            decimal.TryParse(latestValue, out value);
+            recentValue = value;
+            history = new List<string>();
+        }
         public EvaluationResult Evaluate(string input)
         {
             var inputArray = input.Trim().Split(" ");
@@ -17,6 +31,14 @@ namespace CalculatorCore
             decimal firstNumber = 0;
             decimal secondNumber = 0;
             string op = "";
+
+            if(input.ToLower().Equals("history"))
+            {
+                return new EvaluationResult
+                {
+                    History = history
+                };
+            }
 
             if(inputArray.Length != 3 && inputArray.Length != 2)
             {
@@ -70,18 +92,22 @@ namespace CalculatorCore
                 case "+":
                     result.Result = firstNumber + secondNumber;
                     recentValue = result.Result;
+                    history.Add(input + " = " + recentValue);
                     break;
                 case "-":
                     result.Result = firstNumber - secondNumber;
                     recentValue = result.Result;
+                    history.Add(input + " = " + recentValue);
                     break;
                 case "*":
                     result.Result = firstNumber * secondNumber;
                     recentValue = result.Result;
+                    history.Add(input + " = " + recentValue);
                     break;
                 case "/":
                     result.Result = firstNumber / secondNumber;
                     recentValue = result.Result;
+                    history.Add(input + " = " + recentValue);
                     break;
                 default:
                     result.ErrorMessage = $"The operation, '{inputArray[1]}',  is invalid. You must use one of the following : + - * /";

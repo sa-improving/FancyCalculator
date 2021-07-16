@@ -10,7 +10,7 @@ namespace CalculatorCore.Tests
         [TestInitialize]
         public void SetupOrInitialize()
         {
-            _calc = new Calculator();
+            _calc = new Calculator(0);
         }
         
         [TestMethod]
@@ -75,6 +75,14 @@ namespace CalculatorCore.Tests
             _calc.Evaluate("5 * 5");
             var result = _calc.Evaluate("- 7");
             Assert.AreEqual(18, result.Result);
+        }
+
+        [TestMethod]
+        public void ReturningHistory()
+        {
+            _calc.Evaluate("5 * 5");
+            var result = _calc.Evaluate("history");
+            Assert.AreEqual("5 * 5 = 25", result.History[0]);
         }
     }
 }

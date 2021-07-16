@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace FancyCalculator
 {
@@ -20,15 +21,46 @@ namespace FancyCalculator
                     running = false;
                     return;
                 }
-                if(expressionInput.ToLower().Equals("history"))
+                if(expressionInput.ToLower().Contains("history"))
                 {
                     if(history.Count == 0)
                     {
+
                         Console.WriteLine("No operations have been performed");
                     }
                     else
                     {
-                        history.ForEach(x => Console.Write(x + "\n"));
+                        var historyExpressionArray = expressionInput.Split(" ");
+                        if (historyExpressionArray.Length > 1)
+                        {
+                            List<String> operatorHistory;
+                            switch (historyExpressionArray[1])
+                            {
+                                case "+":
+                                    operatorHistory = history.Where(x => x.Contains("+")).ToList();
+                                    operatorHistory.ForEach(x => Console.Write("{0}\n", x));
+                                    break;
+                                case "-":
+                                    operatorHistory = history.Where(x => x.Contains("-")).ToList();
+                                    operatorHistory.ForEach(x => Console.Write("{0}\n", x));
+                                    break;
+                                case "*":
+                                    operatorHistory = history.Where(x => x.Contains("*")).ToList();
+                                    operatorHistory.ForEach(x => Console.Write("{0}\n", x));
+                                    break;
+                                case "/":
+                                    operatorHistory = history.Where(x => x.Contains("/")).ToList();
+                                    operatorHistory.ForEach(x => Console.Write("{0}\n", x));
+                                    break;
+                                default:
+                                    history.ForEach(x => Console.Write("{0}\n", x));
+                                    break;
+                            }
+                        }
+                        else
+                        {
+                            history.ForEach(x => Console.Write("{0}\n", x));
+                        }    
                     }
                     continue;
                 }
@@ -47,9 +79,10 @@ namespace FancyCalculator
                             Console.WriteLine("The second value, {0}, was not a vaild number", expressionNumbers[1]);
                             break;
                         }
+                        decimal starterValue = previousTotal;
                         previousTotal =
                             StandAloneExpression(expressionNumbers[0], previousTotal, continuingValue);
-                        history.Add(expressionInput);
+                        history.Add("_"+starterValue+"_" + " " + expressionInput + " = " + previousTotal);
                         continue;
                 }
 
@@ -77,10 +110,12 @@ namespace FancyCalculator
                 if(result != 0)
                 {
                     previousTotal = result;
-                    history.Add(expressionInput);
+                    history.Add(expressionInput + " = " + result);
                 }
             }           
         }
+
+        
 
         static decimal StandAloneExpression(string op, decimal first, decimal second)
         {
